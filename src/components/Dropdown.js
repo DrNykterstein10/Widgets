@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useRef} from 'react';
 
-const Dropdown = ({options, selectedOption, onSelectOption}) => {
+const Dropdown = ({label, options, selectedOption, onSelectOption}) => {
 
     const [open, setOpen] = useState(false);
 
@@ -41,7 +41,7 @@ const Dropdown = ({options, selectedOption, onSelectOption}) => {
     return (
         <div ref = {ref} className="ui form">
             <div className="field">
-                <label className="label">Choose a color</label>
+                <label className="label">{label}</label>
                 <div 
                 onClick={()=>setOpen(!open)} 
                 className={`ui selection dropdown ${open ? 'visible active' : ''}`}>
@@ -52,7 +52,7 @@ const Dropdown = ({options, selectedOption, onSelectOption}) => {
                     </div>
                     
                 </div>
-                <div style={{color:`${selectedOption.value}`}}>{`This text is ${selectedOption.label}`}</div>
+                {/* <div style={{color:`${selectedOption.value}`}}>{`This text is ${selectedOption.label}`}</div> */}
             </div>
         </div>
     );
