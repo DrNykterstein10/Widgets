@@ -7,13 +7,19 @@ const Dropdown = ({options, selectedOption, onSelectOption}) => {
     const ref = useRef();
 
     useEffect(() => {
-        document.body.addEventListener('click', (event) => {
+
+        const onBodyClick = (event) => {
             if(ref.current.contains(event.target)){
                 return;
             }
             setOpen(false);
-        }, {capture : true});
+        }
 
+        document.body.addEventListener('click', onBodyClick, {capture : true});
+
+        return (() => {
+            document.body.removeEventListener('click', onBodyClick, {capture:true});
+        })
         
     }, []);
 
@@ -44,7 +50,9 @@ const Dropdown = ({options, selectedOption, onSelectOption}) => {
                     <div className={`menu ${open ? 'visible transition' : ''}`}>
                         {renderedOptions}
                     </div>
+                    
                 </div>
+                <div style={{color:`${selectedOption.value}`}}>{`This text is ${selectedOption.label}`}</div>
             </div>
         </div>
     );
