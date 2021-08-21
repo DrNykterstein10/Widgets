@@ -1,5 +1,8 @@
 # Getting Started with Create React App
 
+This is a react app that implements hooks and navigation without using the react-router library.
+It has four components : Accordion, Search, Dropdown and Translate.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

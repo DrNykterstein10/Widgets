@@ -3,6 +3,8 @@ import Accordion from './Accordion';
 import Dropdown from './Dropdown';
 import Search from './Search';
 import Translate from './Translate';
+import Route from './Route';
+import Header from './Header';
 
 const items = [
     {
@@ -36,18 +38,30 @@ const options = [
 
 const App = () => {
 
-    // const [selectedOption, setSelectedOption] = useState(options[0]);
+    const [selectedOption, setSelectedOption] = useState(options[0]);
 
     return (
+        
         <div className="ui container">
-            {/* <Dropdown 
-            selectedOption = {selectedOption}
-            onSelectOption = {setSelectedOption}
-            options ={options}
-            /> */}
-            <Translate />
+            <Header/>
+            <Route path='/'>
+                <Accordion items={items}/>
+            </Route>
+            <Route path='/search'>
+                <Search/>
+            </Route>
+            <Route path='/dropdown'>
+                <Dropdown 
+                    selectedOption = {selectedOption}
+                    onSelectOption = {setSelectedOption}
+                    options ={options}
+                />
+            </Route>
+            <Route path='/translate'>
+                <Translate />
+            </Route>
         </div>
     );
-}
+};
 
 export default App;
